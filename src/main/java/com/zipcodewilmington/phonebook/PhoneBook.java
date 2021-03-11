@@ -21,12 +21,17 @@ public class PhoneBook {
     }
 
     public void add(String name, String phoneNumber) {
+        List<String> phoneNumList = Arrays.asList(phoneNumber);
+        phonebook.put(name,phoneNumList);
     }
 
     public void addAll(String name, String... phoneNumbers) {
+        List<String> phoneNumList = Arrays.asList(phoneNumbers);
+        phonebook.put(name,phoneNumList);
     }
 
     public void remove(String name) {
+        phonebook.remove(name);
     }
 
     public Boolean hasEntry(String name) {
@@ -46,10 +51,14 @@ public class PhoneBook {
     }
 
     public List<String> getAllContactNames() {
-        return null;
+        List<String> returnList = new ArrayList<>();
+        for(String i : phonebook.keySet()){
+            returnList.add(i);
+        }
+        return returnList;
     }
 
     public Map<String, List<String>> getMap() {
-        return null;
+        return phonebook;
     }
 }
