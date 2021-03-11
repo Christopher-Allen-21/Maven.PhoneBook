@@ -17,7 +17,7 @@ public class PhoneBook {
     }
 
     public PhoneBook() {
-        phonebook = new HashMap<>();
+        phonebook = new LinkedHashMap<>();
     }
 
     public void add(String name, String phoneNumber) {
@@ -43,12 +43,27 @@ public class PhoneBook {
     }
 
     public List<String> lookup(String name) {
-        return null;
+        return phonebook.get(name);
     }
 
     public String reverseLookup(String phoneNumber)  {
+        List<String> nameList = getAllContactNames();
+        List<String> temp;
+
+        for(String i: nameList){
+            temp = phonebook.get(i);
+            for(String j:temp){
+                if(j==phoneNumber){
+                    return i;
+                }
+            }
+        }
         return null;
+
     }
+
+
+
 
     public List<String> getAllContactNames() {
         List<String> returnList = new ArrayList<>();
